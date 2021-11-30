@@ -1,10 +1,16 @@
-import { ColumnContainer } from "./styles";
+import { FC } from "react";
+import { ColumnContainer, ColumnTitle } from "./styles";
 
 
-export const Column = () => {
+type ColumnProps = {
+  text: string
+}
+
+export const Column: FC<ColumnProps> = ({ text, children }) => {
   return (
     <ColumnContainer>
-      Column...
+      <ColumnTitle>{text}</ColumnTitle>
+      {children}
     </ColumnContainer>
   )
 }
