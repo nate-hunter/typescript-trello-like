@@ -11,7 +11,9 @@ export const AppContainer = styled.div`
 `;
 
 export const ColumnContainer = styled.div`
-  background-color: #e6e6e6;
+  /* background-color: #e6e6e6; */
+  /* background-color: #ebecf0; */
+  background-color: #9595f9;
   width: 300px;
   min-height: 40px;
   margin-right: 20px;
@@ -33,6 +35,8 @@ export const CardContainer = styled.div`
   max-width: 300px;
   border-radius: 3px;
   box-shadow: #091e4240 0px 1px 0px 0px;
+  font-family: monospace;
+  font-size: 0.9rem;
 `;
 
 type AddItemButtonProps = {
@@ -43,7 +47,7 @@ export const AddItemButton = styled.button<AddItemButtonProps>`
   background-color: #e6e6e6;
   border-radius: 3px;
   border: none;
-  color: ${props => (props.dark ? '#000000' : '#ffffff' )};
+  color: ${props => (props.dark ? '#000' : '#fff' )};
   cursor: pointer;
   max-width: 300px;
   padding: 10px 12px;
@@ -51,7 +55,8 @@ export const AddItemButton = styled.button<AddItemButtonProps>`
   transition: background 85ms ease-in;
   width: 100%;
   &:hover {
-    background-color: #e6e6e6;
+    background-color: #6565f6;
+    color: #fff;
   }
 `;
 
@@ -68,7 +73,7 @@ export const NewItemButton = styled.button`
   border-radius: 3px;
   border: none;
   box-shadow: none;
-  color: #ffffff;
+  color: #fff;
   padding: 6px 12px;
   text-align: center;
 `;
@@ -80,6 +85,7 @@ export const NewItemInput = styled.input`
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
   width: 100%;
+  font-family: monospace;
 `;
 
 

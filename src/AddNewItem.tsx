@@ -12,13 +12,17 @@ export const AddNewItem = (props: AddNewItemProps) => {
     const [showForm, setShowForm] = useState(false);
     const { onAdd, toggleButtonText, dark } = props;
 
+    console.log('dark:', dark);
+
     if (showForm) {
-        <NewItemForm
-            onAdd={text => {
-                onAdd(text)
-                setShowForm(false)
-            }}
-        />
+        return (
+            <NewItemForm
+                onAdd={text => {
+                    onAdd(text)
+                    setShowForm(false)
+                }}
+            />
+        );
     }
 
     return (
