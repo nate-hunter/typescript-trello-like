@@ -1,3 +1,5 @@
+import { createContext, useContext, FC } from "react";
+
 const appData: AppState = {
     lists: [
         {
@@ -31,4 +33,27 @@ type List = {
 
 export type AppState = {
     lists: List[]
+}
+
+const AppStateContext = createContext();
+
+type AppStateContextProps = {
+    lists: List[] 
+    getActionsByListId(id: string): Action[]
+}
+
+const AppStateContext = createContext<AppStateContextProps>({} as AppStateContextProps);
+
+export const AppStateProvider: FC = ({ children }) => {
+    const { lists } = appData;
+
+    const getActionsByListId = (id: string) => {
+        return lists.find((list) => list.id === id)?.actions || []
+    }
+
+    return (
+        <AppStateContext.Provider value={{ lists, getActionsByListId }}>
+            {children}
+        </AppStateContext.Provider>
+    )
 }
