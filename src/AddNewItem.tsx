@@ -12,8 +12,6 @@ export const AddNewItem = (props: AddNewItemProps) => {
     const [showForm, setShowForm] = useState(false);
     const { onAdd, toggleButtonText, dark } = props;
 
-    console.log('dark:', dark);
-
     if (showForm) {
         return (
             <NewItemForm
