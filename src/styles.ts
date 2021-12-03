@@ -44,7 +44,7 @@ type AddItemButtonProps = {
 }
 
 export const AddItemButton = styled.button<AddItemButtonProps>`
-  background-color: #e6e6e6;
+  background-color: ${props => (props.dark ? '#e6e6e6' : '#6565f6 ' )};
   border-radius: 3px;
   border: none;
   color: ${props => (props.dark ? '#000' : '#fff' )};
