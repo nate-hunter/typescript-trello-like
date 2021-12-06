@@ -14,7 +14,6 @@ export const Column = ({ text, id }: ColumnProps) => {
   const { getActionsByListId } = useAppState();
 
   const actions = getActionsByListId(id);
-  console.log('actions:', actions)
 
   return (
     <ColumnContainer>

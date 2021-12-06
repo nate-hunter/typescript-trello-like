@@ -1,4 +1,7 @@
-import { createContext, useContext, FC } from "react";
+import { createContext, useContext, FC, useReducer, Dispatch } from "react";
+import { appStateReducer, AppState, Action, List } from "./appStateReducer";
+import { ReducerAction } from './reducerActions';
+
 
 const appData: AppState = {
     lists: [
@@ -20,39 +23,23 @@ const appData: AppState = {
     ]
 }
 
-type Action = {
-    id: string 
-    text: string 
-}
-
-type List = {
-    id: string 
-    text: string 
-    actions: Action[]
-}
-
-export type AppState = {
-    lists: List[]
-}
-
-// const AppStateContext = createContext();
-
 type AppStateContextProps = {
     lists: List[] 
     getActionsByListId(id: string): Action[]
+    dispatch: Dispatch<ReducerAction>
 }
-
 const AppStateContext = createContext<AppStateContextProps>({} as AppStateContextProps);
 
 export const AppStateProvider: FC = ({ children }) => {
-    const { lists } = appData;
+    const [state, dispatch] = useReducer(appStateReducer, appData);
+    const { lists } = state;
 
     const getActionsByListId = (id: string) => {
-        return lists.find((list) => list.id === id)?.actions || []
+        return lists.find((list) => list.id === id)?.actions || [];
     }
 
     return (
-        <AppStateContext.Provider value={{ lists, getActionsByListId }}>
+        <AppStateContext.Provider value={{ lists, getActionsByListId, dispatch }}>
             {children}
         </AppStateContext.Provider>
     )
